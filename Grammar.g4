@@ -1,13 +1,14 @@
 grammar Grammar;
 
-prog: statement* EOF;
+program: statement* EOF;
 
 statement: funcDeclare
          | varDeclare
          | varAssign
          ;
 
-funcDeclare: retType=IDENT name=IDENT '(' ')' block;
+funcDeclare: retType=IDENT name=IDENT '(' (funcArg (',' funcArg)*)? ')' block;
+funcArg: argType=IDENT name=IDENT;
 
 varDeclare: varType=IDENT name=IDENT ';';
 varAssign: name=IDENT '=' val=EXPR ';';

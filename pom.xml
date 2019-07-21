@@ -10,14 +10,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.antlr</groupId>
-            <artifactId>antlr4-maven-plugin</artifactId>
+            <artifactId>antlr4-runtime</artifactId>
             <version>RELEASE</version>
         </dependency>
     </dependencies>

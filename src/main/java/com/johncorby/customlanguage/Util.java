@@ -14,13 +14,20 @@ public class Util {
     }
 
     /**
+     * python-like print format
+     */
+    public static String format(Object... args) {
+        var msg = "";
+        for (var arg : args)
+            msg += stringify(arg);
+        return msg;
+    }
+
+    /**
      * python-like print
      */
     public static void print(Object... args) {
-        StringBuilder msg = new StringBuilder();
-        for (var arg : args)
-            msg.append(stringify(arg)).append(" ");
-        System.out.println(msg.toString());
+        System.out.println(format(args));
     }
 
     /**
@@ -33,5 +40,19 @@ public class Util {
             e.printStackTrace();
             return -1;
         }
+    }
+
+    /**
+     * change extension of file name
+     */
+    public static String change_ext(String file, String ext) {
+        return file.substring(0, file.lastIndexOf('.')) + ext;
+    }
+
+    /**
+     * assert but raise {@link CompileError} instead of {@link AssertionError}
+     */
+    public static void cassert(boolean condition, String errorMsg) {
+        if (!condition) throw new CompileError(errorMsg);
     }
 }
