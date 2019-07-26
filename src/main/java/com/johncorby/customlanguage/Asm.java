@@ -36,6 +36,6 @@ public class Asm {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        do_cmd("make", OUT_PATH);
+        do_cmd("sh", "make.sh", OUT_PATH);
     }
 }
