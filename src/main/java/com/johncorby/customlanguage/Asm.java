@@ -4,8 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static com.johncorby.customlanguage.Main.IN_PATH;
-import static com.johncorby.customlanguage.Util.change_ext;
-import static com.johncorby.customlanguage.Util.do_cmd;
+import static com.johncorby.customlanguage.Util.*;
 
 public class Asm {
     private static String OUT_PATH;
@@ -22,8 +21,10 @@ public class Asm {
 
     public static void write(String... lines) {
         try {
-            for (var line : lines)
+            for (var line : lines) {
                 stream.write(line + '\n');
+                print('>', line);
+            }
             stream.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,6 +37,6 @@ public class Asm {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        do_cmd("sh", "make.sh", OUT_PATH);
+        do_cmd("./make.sh", OUT_PATH);
     }
 }

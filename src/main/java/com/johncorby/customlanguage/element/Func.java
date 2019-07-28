@@ -17,12 +17,18 @@ public class Func extends Element {
     public Func(String name) {
         super(name);
 
+        // nested funcs are not allowed, so we can just have a global var to represent the func we're currently in
         currentFunc = this;
 
+        // prologue
         Asm.write(
-                String.format("%s:", name),
+                "; begin func " + name,
+                "global " + name,
+                name + ":",
+                "; prologue",
                 "push ebp",
-                "mov ebp, esp"
+                "mov ebp, esp",
+                "; body"
         );
     }
 
@@ -31,6 +37,9 @@ public class Func extends Element {
         return name;
     }
 
+    /**
+     * current local variable offset (ebp-this)
+     */
     public int stackPos() {
         int stackPos = 0;
         for (var var : stack)
@@ -38,17 +47,25 @@ public class Func extends Element {
         return stackPos;
     }
 
+    /**
+     * current func arg variable offset (ebp+this)
+     */
     public int argPos() {
         return 4 * (args.size() + 2);
     }
 
     public void exit() {
+        args.forEach(ArgVar::undefine);
+        stack.forEach(StackVar::undefine);
+
         currentFunc = null;
 
         Asm.write(
+                "; epilogue",
                 "mov esp, ebp",
                 "pop ebp",
-                "ret"
+                "ret",
+                "; end func"
         );
     }
 }

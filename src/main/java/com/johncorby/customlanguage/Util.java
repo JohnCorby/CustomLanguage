@@ -17,10 +17,10 @@ public class Util {
      * python-like print format
      */
     public static String format(Object... args) {
-        var msg = "";
+        StringBuilder msg = new StringBuilder();
         for (var arg : args)
-            msg += stringify(arg);
-        return msg;
+            msg.append(stringify(arg));
+        return msg.toString();
     }
 
     /**
@@ -35,7 +35,10 @@ public class Util {
      */
     public static int do_cmd(String... args) {
         try {
-            return Runtime.getRuntime().exec(args).waitFor();
+            return new ProcessBuilder(args)
+                    .inheritIO()
+                    .start()
+                    .waitFor();
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
             return -1;

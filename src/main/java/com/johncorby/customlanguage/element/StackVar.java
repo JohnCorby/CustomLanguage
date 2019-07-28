@@ -17,12 +17,17 @@ public class StackVar extends Var {
         container.stack.add(this);
         this.pos = container.stackPos();
 
-        Asm.write(String.format("mov esp, %s", pos));
+        // allocate space on declare
+        // instead of all at once during func prologue cuz that's harder lol
+        Asm.write(
+                "; declare var " + name,
+                "sub esp, " + type.size
+        );
     }
 
     @Override
     public String getAsm() {
-        return String.format("[ebp-%d]", pos);
+        return String.format("[ebp-%s]", pos);
     }
 
     @Override

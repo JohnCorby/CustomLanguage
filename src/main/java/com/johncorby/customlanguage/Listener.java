@@ -2,6 +2,7 @@ package com.johncorby.customlanguage;
 
 import com.johncorby.customlanguage.antlr.GrammarBaseListener;
 import com.johncorby.customlanguage.antlr.GrammarParser;
+import com.johncorby.customlanguage.element.ArgVar;
 import com.johncorby.customlanguage.element.Element;
 import com.johncorby.customlanguage.element.Func;
 import com.johncorby.customlanguage.element.StackVar;
@@ -31,10 +32,11 @@ public class Listener extends GrammarBaseListener {
     }
 
     @Override
-    public void exitVarDeclare(GrammarParser.VarDeclareContext ctx) {
-        Element.get(
-                new Pair<>("name", ctx.name.getText()),
-                new Pair<>("container", Func.currentFunc)
-        ).undefine();
+    public void enterFuncArg(GrammarParser.FuncArgContext ctx) {
+        new ArgVar(
+                Func.currentFunc,
+                Type.valueOf(ctx.argType.getText().toUpperCase()),
+                ctx.name.getText()
+        );
     }
 }
