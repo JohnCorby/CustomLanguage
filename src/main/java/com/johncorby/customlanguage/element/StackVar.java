@@ -14,25 +14,22 @@ public class StackVar extends Var {
         super(type, name);
         this.container = container;
 
-        container.stack.add(this);
-        this.pos = container.stackPos();
+        container.locals.add(this);
+        this.pos = container.localPos();
 
         // allocate space on declare
         // instead of all at once during func prologue cuz that's harder lol
-        Asm.write(
-                "; declare var " + name,
-                "sub esp, " + type.size
-        );
+        Asm.write(String.format("sub esp, %s ; declare var %s", type.size, name));
     }
 
     @Override
     public String getAsm() {
-        return String.format("[ebp-%s]", pos);
+        return String.format("%s [ebp-%s]", type, pos);
     }
 
     @Override
     public void undefine() {
-        container.stack.remove(this);
+        container.locals.remove(this);
         super.undefine();
     }
 }

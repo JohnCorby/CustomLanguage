@@ -25,6 +25,7 @@ public class Asm {
                 stream.write(line + '\n');
                 print('>', line);
             }
+//            stream.write('\n');
             stream.flush();
         } catch (IOException e) {
             e.printStackTrace();

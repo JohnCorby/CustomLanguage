@@ -1,5 +1,8 @@
 package com.johncorby.customlanguage;
 
+import org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -7,10 +10,14 @@ public class Util {
     /**
      * convert any object to a string
      */
-    public static String stringify(Object obj) {
+    public static String toString(Object obj) {
         if (obj instanceof Object[])
             return Arrays.deepToString((Object[]) obj);
         return String.valueOf(obj);
+    }
+
+    public static String toString2(Object obj) {
+        return ReflectionToStringBuilder.toString(obj, new MultilineRecursiveToStringStyle());
     }
 
     /**
@@ -19,7 +26,7 @@ public class Util {
     public static String format(Object... args) {
         StringBuilder msg = new StringBuilder();
         for (var arg : args)
-            msg.append(stringify(arg));
+            msg.append(toString(arg)).append(' ');
         return msg.toString();
     }
 

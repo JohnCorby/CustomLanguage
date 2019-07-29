@@ -7,12 +7,13 @@ import java.util.Set;
 
 /**
  * represents a function with a stack frame
+ * uses c calling convention
  */
 public class Func extends Element {
     public static Func currentFunc;
 
-    public final Set<StackVar> stack = new HashSet<>();
     public final Set<ArgVar> args = new HashSet<>();
+    public final Set<StackVar> locals = new HashSet<>();
 
     public Func(String name) {
         super(name);
@@ -20,15 +21,12 @@ public class Func extends Element {
         // nested funcs are not allowed, so we can just have a global var to represent the func we're currently in
         currentFunc = this;
 
-        // prologue
         Asm.write(
                 "; begin func " + name,
                 "global " + name,
                 name + ":",
-                "; prologue",
                 "push ebp",
-                "mov ebp, esp",
-                "; body"
+                "mov ebp, esp"
         );
     }
 
@@ -38,34 +36,38 @@ public class Func extends Element {
     }
 
     /**
-     * current local variable offset (ebp-this)
-     */
-    public int stackPos() {
-        int stackPos = 0;
-        for (var var : stack)
-            stackPos += var.type.size;
-        return stackPos;
-    }
-
-    /**
      * current func arg variable offset (ebp+this)
      */
     public int argPos() {
-        return 4 * (args.size() + 2);
+        return (1 + args.size()) * 4;
     }
 
+    /**
+     * current local variable offset (ebp-this)
+     */
+    public int localPos() {
+        return locals.stream()
+                .mapToInt(v -> v.type.size)
+                .sum();
+    }
+
+    /**
+     * leave the function
+     * use this instead of undefine because the function still exists after declaration is done
+     */
     public void exit() {
-        args.forEach(ArgVar::undefine);
-        stack.forEach(StackVar::undefine);
+        // delete local vars
+        // since undefine removes element from set, iterate over COPY of set to avoid exception
+        new HashSet<>(args).forEach(ArgVar::undefine);
+        new HashSet<>(locals).forEach(StackVar::undefine);
 
         currentFunc = null;
 
         Asm.write(
-                "; epilogue",
                 "mov esp, ebp",
                 "pop ebp",
                 "ret",
-                "; end func"
+                "; end func " + name
         );
     }
 }

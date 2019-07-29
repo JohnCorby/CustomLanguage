@@ -19,7 +19,7 @@ public class ArgVar extends Var {
 
     @Override
     public String getAsm() {
-        return String.format("[ebp+%s]", pos);
+        return String.format("%s [ebp+%s]", type, pos);
     }
 
     @Override

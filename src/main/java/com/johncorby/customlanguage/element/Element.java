@@ -1,6 +1,7 @@
 package com.johncorby.customlanguage.element;
 
-import org.antlr.v4.runtime.misc.Pair;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -23,30 +24,19 @@ public abstract class Element {
         this.name = name;
 
         cassert(!elements.contains(this),
-                String.format("%s %s already exists", getClass().getSimpleName(), name));
+                this + " already exists");
         elements.add(this);
     }
 
     /**
-     * get element by features using reflection
-     *
-     * @param features list of {name, value} arrays that will be matched
+     * get element by type (and subtypes) and name
      */
-    @SafeVarargs
-    public static <E extends Element> E get(Pair<String, ?>... features) {
-        for (Element element : elements)
-            for (var feature : features) {
-                var name = feature.a;
-                var value = feature.b;
-
-                try {
-                    var thisValue = element.getClass().getField(name).get(element);
-
-                    if (Objects.equals(thisValue, value)) return (E) element;
-                } catch (IllegalAccessException | NoSuchFieldException e) {
-                    e.printStackTrace();
-                }
-            }
+    public static <E extends Element> E get(Class<E> type, String name) {
+        for (var e : elements) {
+            if (type.isInstance(e) &&
+                    Objects.equals(e.name, name))
+                return (E) e;
+        }
         return null;
     }
 
@@ -61,6 +51,13 @@ public abstract class Element {
      * get assembly used to obtain this element
      */
     public abstract String getAsm();
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append(name)
+                .toString();
+    }
 
     @Override
     public boolean equals(Object o) {
