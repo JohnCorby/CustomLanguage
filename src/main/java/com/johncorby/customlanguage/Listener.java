@@ -3,6 +3,7 @@ package com.johncorby.customlanguage;
 import com.johncorby.customlanguage.antlr.GrammarBaseListener;
 import com.johncorby.customlanguage.antlr.GrammarParser;
 import com.johncorby.customlanguage.element.*;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Listener extends GrammarBaseListener {
     @Override
@@ -26,6 +27,18 @@ public class Listener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterFuncCall(GrammarParser.FuncCallContext ctx) {
+        String[] args;
+        if (ctx.args.children == null) args = new String[0];
+        else args = ctx.args.children.stream()
+                .filter(parseTree -> parseTree instanceof GrammarParser.ExprContext)
+                .map(ParseTree::getText)
+                .toArray(String[]::new);
+        Element.get(Func.class, ctx.name.getText())
+                .call(args);
+    }
+
+    @Override
     public void enterVarDeclare(GrammarParser.VarDeclareContext ctx) {
         // local var
         if (Func.currentFunc != null)
@@ -40,5 +53,16 @@ public class Listener extends GrammarBaseListener {
     public void enterVarAssign(GrammarParser.VarAssignContext ctx) {
         Element.get(Var.class, ctx.name.getText())
                 .assign(ctx.val.getText());
+    }
+
+    @Override
+    public void enterAsm(GrammarParser.AsmContext ctx) {
+        var code = ctx.code.getText();
+        code = code.substring(1, code.length() - 1);
+        Asm.write(
+                "; begin asm",
+                code,
+                "; end asm"
+        );
     }
 }

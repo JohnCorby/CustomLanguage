@@ -30,6 +30,26 @@ public class Func extends Element {
         );
     }
 
+    /**
+     * leave the function
+     * use this instead of undefine because the function still exists after declaration is done
+     */
+    public void exit() {
+        // delete local vars
+        // since undefine removes element from set, iterate over COPY of set to avoid exception
+        new HashSet<>(args).forEach(ArgVar::undefine);
+        new HashSet<>(locals).forEach(StackVar::undefine);
+
+        currentFunc = null;
+
+        Asm.write(
+                "mov esp, ebp",
+                "pop ebp",
+                "ret",
+                "; end func " + name
+        );
+    }
+
     @Override
     public String getAsm() {
         return name;
@@ -52,22 +72,13 @@ public class Func extends Element {
     }
 
     /**
-     * leave the function
-     * use this instead of undefine because the function still exists after declaration is done
+     * call this function with args
+     * todo function signatures and stuff
      */
-    public void exit() {
-        // delete local vars
-        // since undefine removes element from set, iterate over COPY of set to avoid exception
-        new HashSet<>(args).forEach(ArgVar::undefine);
-        new HashSet<>(locals).forEach(StackVar::undefine);
-
-        currentFunc = null;
-
-        Asm.write(
-                "mov esp, ebp",
-                "pop ebp",
-                "ret",
-                "; end func " + name
-        );
+    public void call(String... args) {
+        for (var i = args.length - 1; i >= 0; i--)
+            Asm.write(String.format("push %s ; arg %s", args[i], i + 1));
+        Asm.write("call " + getAsm());
+        if (args.length > 0) Asm.write("add esp, " + args.length * 4);
     }
 }

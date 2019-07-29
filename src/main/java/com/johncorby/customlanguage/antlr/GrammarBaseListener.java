@@ -89,6 +89,42 @@ public class GrammarBaseListener implements GrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
+    public void enterFuncCall(GrammarParser.FuncCallContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitFuncCall(GrammarParser.FuncCallContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterFuncCallArgs(GrammarParser.FuncCallArgsContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitFuncCallArgs(GrammarParser.FuncCallArgsContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
     public void enterVarDeclare(GrammarParser.VarDeclareContext ctx) {
     }
 
@@ -125,6 +161,24 @@ public class GrammarBaseListener implements GrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
+    public void enterAsm(GrammarParser.AsmContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitAsm(GrammarParser.AsmContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
     public void enterBlock(GrammarParser.BlockContext ctx) {
     }
 
@@ -135,6 +189,24 @@ public class GrammarBaseListener implements GrammarListener {
      */
     @Override
     public void exitBlock(GrammarParser.BlockContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterExpr(GrammarParser.ExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitExpr(GrammarParser.ExprContext ctx) {
     }
 
     /**

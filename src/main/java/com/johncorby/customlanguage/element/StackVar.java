@@ -23,13 +23,13 @@ public class StackVar extends Var {
     }
 
     @Override
-    public String getAsm() {
-        return String.format("%s [ebp-%s]", type, pos);
-    }
-
-    @Override
     public void undefine() {
         container.locals.remove(this);
         super.undefine();
+    }
+
+    @Override
+    public String getAsm() {
+        return String.format("%s [ebp-%s]", type, pos);
     }
 }

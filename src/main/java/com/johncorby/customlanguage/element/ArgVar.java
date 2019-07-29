@@ -18,13 +18,13 @@ public class ArgVar extends Var {
     }
 
     @Override
-    public String getAsm() {
-        return String.format("%s [ebp+%s]", type, pos);
-    }
-
-    @Override
     public void undefine() {
         container.args.remove(this);
         super.undefine();
+    }
+
+    @Override
+    public String getAsm() {
+        return String.format("%s [ebp+%s]", type, pos);
     }
 }

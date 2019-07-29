@@ -1,6 +1,5 @@
 // Generated from /home/johncorby/Desktop/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
-
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -65,6 +64,34 @@ public interface GrammarListener extends ParseTreeListener {
     void exitFuncArg(GrammarParser.FuncArgContext ctx);
 
     /**
+     * Enter a parse tree produced by {@link GrammarParser#funcCall}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterFuncCall(GrammarParser.FuncCallContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link GrammarParser#funcCall}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitFuncCall(GrammarParser.FuncCallContext ctx);
+
+    /**
+     * Enter a parse tree produced by {@link GrammarParser#funcCallArgs}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterFuncCallArgs(GrammarParser.FuncCallArgsContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link GrammarParser#funcCallArgs}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitFuncCallArgs(GrammarParser.FuncCallArgsContext ctx);
+
+    /**
      * Enter a parse tree produced by {@link GrammarParser#varDeclare}.
      *
      * @param ctx the parse tree
@@ -93,6 +120,20 @@ public interface GrammarListener extends ParseTreeListener {
     void exitVarAssign(GrammarParser.VarAssignContext ctx);
 
     /**
+     * Enter a parse tree produced by {@link GrammarParser#asm}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterAsm(GrammarParser.AsmContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link GrammarParser#asm}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitAsm(GrammarParser.AsmContext ctx);
+
+    /**
      * Enter a parse tree produced by {@link GrammarParser#block}.
      *
      * @param ctx the parse tree
@@ -105,4 +146,18 @@ public interface GrammarListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     void exitBlock(GrammarParser.BlockContext ctx);
+
+    /**
+     * Enter a parse tree produced by {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterExpr(GrammarParser.ExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitExpr(GrammarParser.ExprContext ctx);
 }
