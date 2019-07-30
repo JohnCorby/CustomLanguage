@@ -36,6 +36,20 @@ public interface GrammarListener extends ParseTreeListener {
     void exitStatement(GrammarParser.StatementContext ctx);
 
     /**
+     * Enter a parse tree produced by {@link GrammarParser#externFuncDeclare}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterExternFuncDeclare(GrammarParser.ExternFuncDeclareContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link GrammarParser#externFuncDeclare}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitExternFuncDeclare(GrammarParser.ExternFuncDeclareContext ctx);
+
+    /**
      * Enter a parse tree produced by {@link GrammarParser#funcDeclare}.
      *
      * @param ctx the parse tree
@@ -62,6 +76,20 @@ public interface GrammarListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     void exitFuncArg(GrammarParser.FuncArgContext ctx);
+
+    /**
+     * Enter a parse tree produced by {@link GrammarParser#block}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterBlock(GrammarParser.BlockContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link GrammarParser#block}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitBlock(GrammarParser.BlockContext ctx);
 
     /**
      * Enter a parse tree produced by {@link GrammarParser#funcCall}.
@@ -132,20 +160,6 @@ public interface GrammarListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     void exitAsm(GrammarParser.AsmContext ctx);
-
-    /**
-     * Enter a parse tree produced by {@link GrammarParser#block}.
-     *
-     * @param ctx the parse tree
-     */
-    void enterBlock(GrammarParser.BlockContext ctx);
-
-    /**
-     * Exit a parse tree produced by {@link GrammarParser#block}.
-     *
-     * @param ctx the parse tree
-     */
-    void exitBlock(GrammarParser.BlockContext ctx);
 
     /**
      * Enter a parse tree produced by {@link GrammarParser#expr}.

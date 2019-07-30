@@ -5,28 +5,35 @@ import com.johncorby.customlanguage.antlr.GrammarParser;
 import com.johncorby.customlanguage.element.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
+/**
+ * handles entering/exiting of antlr rules
+ */
 public class Listener extends GrammarBaseListener {
     @Override
+    public void enterExternFuncDeclare(GrammarParser.ExternFuncDeclareContext ctx) {
+        new ExternFunc(ctx.name.getText());
+    }
+
+    @Override
     public void enterFuncDeclare(GrammarParser.FuncDeclareContext ctx) {
-        new Func(ctx.name.getText());
+        new DefinedFunc(ctx.name.getText());
     }
 
     @Override
     public void exitFuncDeclare(GrammarParser.FuncDeclareContext ctx) {
-        Element.get(Func.class, ctx.name.getText())
+        Element.get(DefinedFunc.class, ctx.name.getText())
                 .exit();
     }
 
     @Override
     public void enterFuncArg(GrammarParser.FuncArgContext ctx) {
-        new ArgVar(
-                Func.currentFunc,
-                Type.get(ctx.argType.getText()),
-                ctx.name.getText()
-        );
+        // only allocate arg if in defined func (not extern func)
+        if (DefinedFunc.currentFunc != null)
+            new ArgVar(
+                    DefinedFunc.currentFunc,
+                    Type.get(ctx.argType.getText()),
+                    ctx.name.getText()
+            );
     }
 
     @Override
@@ -37,6 +44,7 @@ public class Listener extends GrammarBaseListener {
                 .filter(parseTree -> parseTree instanceof GrammarParser.ExprContext)
                 .map(ParseTree::getText)
                 .toArray(String[]::new);
+
         Element.get(Func.class, ctx.name.getText())
                 .call(args);
     }
@@ -44,9 +52,9 @@ public class Listener extends GrammarBaseListener {
     @Override
     public void enterVarDeclare(GrammarParser.VarDeclareContext ctx) {
         // local var
-        if (Func.currentFunc != null)
+        if (DefinedFunc.currentFunc != null)
             new FrameVar(
-                    Func.currentFunc,
+                    DefinedFunc.currentFunc,
                     Type.get(ctx.varType.getText()),
                     ctx.name.getText()
             );
@@ -65,14 +73,9 @@ public class Listener extends GrammarBaseListener {
 
         // replace format .name with local var equivalent
         // so you can use local vars with asm blocks
-        var matches = Pattern.compile("\\.(\\w+)")
-                .matcher(code)
-                .results()
-                .map(m -> m.group(1))
-                .collect(Collectors.toSet());
-        for (var match : matches)
-            code = code.replace('.' + match,
-                    Element.get(LocalVar.class, match).getAsm());
+
+        code = Util.replaceMap(code, "\\.([a-zA-Z_][0-9a-zA-Z_]*)",
+                m -> Element.get(LocalVar.class, m.group(1)).getAsm());
 
         Asm.write(
                 "; begin asm",

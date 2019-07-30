@@ -2,50 +2,17 @@ package com.johncorby.customlanguage.element;
 
 import com.johncorby.customlanguage.Asm;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 /**
- * represents a function with a stack frame
+ * represents any function
  * uses c calling convention
  */
-public class Func extends Element {
-    public static Func currentFunc;
-
-    public final Set<LocalVar> vars = new HashSet<>();
+public abstract class Func extends Element {
+    // todo signature (ret and arg types)
 
     public Func(String name) {
         super(name);
-
-        // nested funcs are not allowed, so we can just have a global var to represent the func we're currently in
-        currentFunc = this;
-
-        Asm.write(
-                "; begin func " + name,
-                "global " + name,
-                name + ":",
-                "push ebp",
-                "mov ebp, esp"
-        );
-    }
-
-    /**
-     * leave the function
-     * use this instead of undefine because the function still exists after declaration is done
-     */
-    public void exit() {
-        // delete local vars
-        // since undefine removes element from set, iterate over COPY of set to avoid exception
-        new HashSet<>(vars).forEach(LocalVar::undefine);
-
-        currentFunc = null;
-
-        Asm.write(
-                "mov esp, ebp",
-                "pop ebp",
-                "ret",
-                "; end func " + name
-        );
     }
 
     @Override
@@ -66,5 +33,16 @@ public class Func extends Element {
 
         // clean stack
         if (args.length > 0) Asm.write("add esp, " + args.length * 4);
+    }
+
+    /**
+     * prevent subclasses of same name
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Func)) return false;
+        Element element = (Element) o;
+        return Objects.equals(name, element.name);
     }
 }

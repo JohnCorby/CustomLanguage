@@ -10,6 +10,9 @@ import java.io.IOException;
 
 import static com.johncorby.customlanguage.Main.IN_PATH;
 
+/**
+ * parses source code with antlr
+ */
 public class Parse {
     public static void go() {
         try {

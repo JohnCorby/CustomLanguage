@@ -53,6 +53,24 @@ public class GrammarBaseListener implements GrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
+    public void enterExternFuncDeclare(GrammarParser.ExternFuncDeclareContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitExternFuncDeclare(GrammarParser.ExternFuncDeclareContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
     public void enterFuncDeclare(GrammarParser.FuncDeclareContext ctx) {
     }
 
@@ -81,6 +99,24 @@ public class GrammarBaseListener implements GrammarListener {
      */
     @Override
     public void exitFuncArg(GrammarParser.FuncArgContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterBlock(GrammarParser.BlockContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitBlock(GrammarParser.BlockContext ctx) {
     }
 
     /**
@@ -171,24 +207,6 @@ public class GrammarBaseListener implements GrammarListener {
      */
     @Override
     public void exitAsm(GrammarParser.AsmContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void enterBlock(GrammarParser.BlockContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void exitBlock(GrammarParser.BlockContext ctx) {
     }
 
     /**

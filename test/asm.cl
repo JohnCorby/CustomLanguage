@@ -1,5 +1,7 @@
+dword printf();
+dword puts();
+
 asm "
-    extern printf, puts
     format db 'addr of msg is %p', 10, 0
     msg db 'hello world', 0
 ";

@@ -8,10 +8,10 @@ import java.util.Objects;
  * variable contained in a function
  */
 public abstract class LocalVar extends Var {
-    public final Func parent;
+    public final DefinedFunc parent;
     public final int pos;
 
-    public LocalVar(Func parent, Type type, String name) {
+    public LocalVar(DefinedFunc parent, Type type, String name) {
         super(type, name);
         this.parent = parent;
 
@@ -35,7 +35,7 @@ public abstract class LocalVar extends Var {
         return String.format(
                 pos < 0 ? "%s [ebp-%s]" : "%s [ebp+%s]",
                 type.sizeOperand(),
-                pos
+                Math.abs(pos)
         );
     }
 

@@ -1,5 +1,8 @@
 package com.johncorby.customlanguage;
 
+/**
+ * represents var types
+ */
 public enum Type {
     BYTE(1),
     WORD(2),

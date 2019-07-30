@@ -2,29 +2,33 @@ grammar Grammar;
 
 program: statement* EOF;
 
-statement: funcDeclare
-         | funcCall
+statement: externFuncDeclare
+         | funcDeclare
+         | funcCall ';'
          | varDeclare
          | varAssign
          | asm
          ;
 
+externFuncDeclare: retType=IDENT name=IDENT '(' (funcArg (',' funcArg)*)? ')' ';';
+
 funcDeclare: retType=IDENT name=IDENT '(' (funcArg (',' funcArg)*)? ')' block;
 funcArg: argType=IDENT name=IDENT;
+block: '{' statement* '}';
 
-funcCall: name=IDENT '(' args=funcCallArgs ')' ';';
+funcCall: name=IDENT '(' args=funcCallArgs ')';
 funcCallArgs: (expr (',' expr)*)?;
 
 varDeclare: varType=IDENT name=IDENT ';';
 varAssign: name=IDENT '=' val=expr ';';
 
-asm: 'asm' code=ASM_BLOCK ';';
-ASM_BLOCK: '"' .+? '"';
+asm: 'asm' code=STR_LITERAL ';';
 
-block: '{' statement* '}';
-expr: IDENT
-    | INT_LITERAL
-    | STR_LITERAL
+expr: literal=INT_LITERAL
+    | func=funcCall
+    | '(' paren=expr ')'
+    | left=expr op=('*'|'/') right=expr
+    | left=expr op=('+'|'-') right=expr
     ;
 
 INT_LITERAL: '-'? DIGIT+;

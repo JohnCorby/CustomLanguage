@@ -1,11 +1,15 @@
 package com.johncorby.customlanguage;
 
-import org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.function.Function;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
+/**
+ * misc utils
+ */
 public class Util {
     /**
      * convert any object to a string
@@ -14,10 +18,6 @@ public class Util {
         if (obj instanceof Object[])
             return Arrays.deepToString((Object[]) obj);
         return String.valueOf(obj);
-    }
-
-    public static String toString2(Object obj) {
-        return ReflectionToStringBuilder.toString(obj, new MultilineRecursiveToStringStyle());
     }
 
     /**
@@ -64,5 +64,21 @@ public class Util {
      */
     public static void cassert(boolean condition, String errorMsg) {
         if (!condition) throw new CompileError(errorMsg);
+    }
+
+    /**
+     * replace all patterns in input using a mapping function
+     */
+    public static String replaceMap(String input, String pattern, Function<MatchResult, String> mapper) {
+        var matches = Pattern.compile(pattern)
+                .matcher(input)
+                .results()
+                .collect(Collectors.toSet());
+        for (var match : matches)
+            input = input.replace(
+                    match.group(),
+                    mapper.apply(match)
+            );
+        return input;
     }
 }
