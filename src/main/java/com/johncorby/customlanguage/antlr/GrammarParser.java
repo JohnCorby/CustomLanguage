@@ -1,5 +1,6 @@
 // Generated from /home/johncorby/Desktop/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATN;
 import org.antlr.v4.runtime.atn.ATNDeserializer;
@@ -14,8 +15,8 @@ import java.util.List;
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GrammarParser extends Parser {
     public static final int
-            T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, T__7 = 8, INT_LITERAL = 9,
-            STR_LITERAL = 10, IDENT = 11, WHITESPACE = 12, COMMENT = 13, BLOCK_COMMENT = 14;
+            T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, T__7 = 8, ASM_BLOCK = 9,
+            INT_LITERAL = 10, STR_LITERAL = 11, IDENT = 12, WHITESPACE = 13, COMMENT = 14, BLOCK_COMMENT = 15;
     public static final int
             RULE_program = 0, RULE_statement = 1, RULE_funcDeclare = 2, RULE_funcArg = 3,
             RULE_funcCall = 4, RULE_funcCallArgs = 5, RULE_varDeclare = 6, RULE_varAssign = 7,
@@ -27,30 +28,30 @@ public class GrammarParser extends Parser {
     @Deprecated
     public static final String[] tokenNames;
     public static final String _serializedATN =
-            "\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20e\4\2\t\2\4\3\t" +
+            "\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21c\4\2\t\2\4\3\t" +
                     "\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4" +
                     "\f\t\f\3\2\7\2\32\n\2\f\2\16\2\35\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\5\3" +
                     "&\n\3\3\4\3\4\3\4\3\4\3\4\3\4\7\4.\n\4\f\4\16\4\61\13\4\5\4\63\n\4\3\4" +
                     "\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\7\7D\n\7\f\7" +
                     "\16\7G\13\7\5\7I\n\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3" +
-                    "\n\3\n\3\n\3\13\3\13\7\13\\\n\13\f\13\16\13_\13\13\3\13\3\13\3\f\3\f\3" +
-                    "\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\3\3\2\13\f\2c\2\33\3\2\2\2\4%\3" +
-                    "\2\2\2\6\'\3\2\2\2\b\67\3\2\2\2\n:\3\2\2\2\fH\3\2\2\2\16J\3\2\2\2\20N" +
-                    "\3\2\2\2\22S\3\2\2\2\24Y\3\2\2\2\26b\3\2\2\2\30\32\5\4\3\2\31\30\3\2\2" +
-                    "\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\36\3\2\2\2\35\33\3\2\2" +
-                    "\2\36\37\7\2\2\3\37\3\3\2\2\2 &\5\6\4\2!&\5\n\6\2\"&\5\16\b\2#&\5\20\t" +
-                    "\2$&\5\22\n\2% \3\2\2\2%!\3\2\2\2%\"\3\2\2\2%#\3\2\2\2%$\3\2\2\2&\5\3" +
-                    "\2\2\2\'(\7\r\2\2()\7\r\2\2)\62\7\3\2\2*/\5\b\5\2+,\7\4\2\2,.\5\b\5\2" +
-                    "-+\3\2\2\2.\61\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\63\3\2\2\2\61/\3\2\2\2" +
-                    "\62*\3\2\2\2\62\63\3\2\2\2\63\64\3\2\2\2\64\65\7\5\2\2\65\66\5\24\13\2" +
-                    "\66\7\3\2\2\2\678\7\r\2\289\7\r\2\29\t\3\2\2\2:;\7\r\2\2;<\7\3\2\2<=\5" +
-                    "\f\7\2=>\7\5\2\2>?\7\6\2\2?\13\3\2\2\2@E\5\26\f\2AB\7\4\2\2BD\5\26\f\2" +
-                    "CA\3\2\2\2DG\3\2\2\2EC\3\2\2\2EF\3\2\2\2FI\3\2\2\2GE\3\2\2\2H@\3\2\2\2" +
-                    "HI\3\2\2\2I\r\3\2\2\2JK\7\r\2\2KL\7\r\2\2LM\7\6\2\2M\17\3\2\2\2NO\7\r" +
-                    "\2\2OP\7\7\2\2PQ\5\26\f\2QR\7\6\2\2R\21\3\2\2\2ST\7\b\2\2TU\7\3\2\2UV" +
-                    "\7\f\2\2VW\7\5\2\2WX\7\6\2\2X\23\3\2\2\2Y]\7\t\2\2Z\\\5\4\3\2[Z\3\2\2" +
-                    "\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^`\3\2\2\2_]\3\2\2\2`a\7\n\2\2a\25\3" +
-                    "\2\2\2bc\t\2\2\2c\27\3\2\2\2\t\33%/\62EH]";
+                    "\n\3\13\3\13\7\13Z\n\13\f\13\16\13]\13\13\3\13\3\13\3\f\3\f\3\f\2\2\r" +
+                    "\2\4\6\b\n\f\16\20\22\24\26\2\3\3\2\f\16\2a\2\33\3\2\2\2\4%\3\2\2\2\6" +
+                    "\'\3\2\2\2\b\67\3\2\2\2\n:\3\2\2\2\fH\3\2\2\2\16J\3\2\2\2\20N\3\2\2\2" +
+                    "\22S\3\2\2\2\24W\3\2\2\2\26`\3\2\2\2\30\32\5\4\3\2\31\30\3\2\2\2\32\35" +
+                    "\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\36\3\2\2\2\35\33\3\2\2\2\36\37" +
+                    "\7\2\2\3\37\3\3\2\2\2 &\5\6\4\2!&\5\n\6\2\"&\5\16\b\2#&\5\20\t\2$&\5\22" +
+                    "\n\2% \3\2\2\2%!\3\2\2\2%\"\3\2\2\2%#\3\2\2\2%$\3\2\2\2&\5\3\2\2\2\'(" +
+                    "\7\16\2\2()\7\16\2\2)\62\7\3\2\2*/\5\b\5\2+,\7\4\2\2,.\5\b\5\2-+\3\2\2" +
+                    "\2.\61\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\63\3\2\2\2\61/\3\2\2\2\62*\3\2" +
+                    "\2\2\62\63\3\2\2\2\63\64\3\2\2\2\64\65\7\5\2\2\65\66\5\24\13\2\66\7\3" +
+                    "\2\2\2\678\7\16\2\289\7\16\2\29\t\3\2\2\2:;\7\16\2\2;<\7\3\2\2<=\5\f\7" +
+                    "\2=>\7\5\2\2>?\7\6\2\2?\13\3\2\2\2@E\5\26\f\2AB\7\4\2\2BD\5\26\f\2CA\3" +
+                    "\2\2\2DG\3\2\2\2EC\3\2\2\2EF\3\2\2\2FI\3\2\2\2GE\3\2\2\2H@\3\2\2\2HI\3" +
+                    "\2\2\2I\r\3\2\2\2JK\7\16\2\2KL\7\16\2\2LM\7\6\2\2M\17\3\2\2\2NO\7\16\2" +
+                    "\2OP\7\7\2\2PQ\5\26\f\2QR\7\6\2\2R\21\3\2\2\2ST\7\b\2\2TU\7\13\2\2UV\7" +
+                    "\6\2\2V\23\3\2\2\2W[\7\t\2\2XZ\5\4\3\2YX\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[" +
+                    "\\\3\2\2\2\\^\3\2\2\2][\3\2\2\2^_\7\n\2\2_\25\3\2\2\2`a\t\2\2\2a\27\3" +
+                    "\2\2\2\t\33%/\62EH[";
     public static final ATN _ATN =
             new ATNDeserializer().deserialize(_serializedATN.toCharArray());
     protected static final DFA[] _decisionToDFA;
@@ -105,7 +106,7 @@ public class GrammarParser extends Parser {
 
     private static String[] makeSymbolicNames() {
         return new String[]{
-                null, null, null, null, null, null, null, null, null, "INT_LITERAL",
+                null, null, null, null, null, null, null, null, null, "ASM_BLOCK", "INT_LITERAL",
                 "STR_LITERAL", "IDENT", "WHITESPACE", "COMMENT", "BLOCK_COMMENT"
         };
     }
@@ -341,7 +342,7 @@ public class GrammarParser extends Parser {
                 setState(70);
                 _errHandler.sync(this);
                 _la = _input.LA(1);
-                if (_la == INT_LITERAL || _la == STR_LITERAL) {
+                if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT_LITERAL) | (1L << STR_LITERAL) | (1L << IDENT))) != 0)) {
                     {
                         setState(62);
                         expr();
@@ -432,12 +433,8 @@ public class GrammarParser extends Parser {
                 setState(81);
                 match(T__5);
                 setState(82);
-                match(T__0);
+                ((AsmContext) _localctx).code = match(ASM_BLOCK);
                 setState(83);
-                ((AsmContext) _localctx).code = match(STR_LITERAL);
-                setState(84);
-                match(T__2);
-                setState(85);
                 match(T__3);
             }
         } catch (RecognitionException re) {
@@ -457,23 +454,23 @@ public class GrammarParser extends Parser {
         try {
             enterOuterAlt(_localctx, 1);
             {
-                setState(87);
+                setState(85);
                 match(T__6);
-                setState(91);
+                setState(89);
                 _errHandler.sync(this);
                 _la = _input.LA(1);
                 while (_la == T__5 || _la == IDENT) {
                     {
                         {
-                            setState(88);
+                            setState(86);
                             statement();
                         }
                     }
-                    setState(93);
+                    setState(91);
                     _errHandler.sync(this);
                     _la = _input.LA(1);
                 }
-                setState(94);
+                setState(92);
                 match(T__7);
             }
         } catch (RecognitionException re) {
@@ -493,9 +490,9 @@ public class GrammarParser extends Parser {
         try {
             enterOuterAlt(_localctx, 1);
             {
-                setState(96);
+                setState(94);
                 _la = _input.LA(1);
-                if (!(_la == INT_LITERAL || _la == STR_LITERAL)) {
+                if (!((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT_LITERAL) | (1L << STR_LITERAL) | (1L << IDENT))) != 0))) {
                     _errHandler.recoverInline(this);
                 } else {
                     if (_input.LA(1) == Token.EOF) matchedEOF = true;
@@ -795,8 +792,8 @@ public class GrammarParser extends Parser {
             super(parent, invokingState);
         }
 
-        public TerminalNode STR_LITERAL() {
-            return getToken(GrammarParser.STR_LITERAL, 0);
+        public TerminalNode ASM_BLOCK() {
+            return getToken(GrammarParser.ASM_BLOCK, 0);
         }
 
         @Override
@@ -847,6 +844,10 @@ public class GrammarParser extends Parser {
     public static class ExprContext extends ParserRuleContext {
         public ExprContext(ParserRuleContext parent, int invokingState) {
             super(parent, invokingState);
+        }
+
+        public TerminalNode IDENT() {
+            return getToken(GrammarParser.IDENT, 0);
         }
 
         public TerminalNode INT_LITERAL() {

@@ -12,8 +12,7 @@ import java.util.Set;
 public class Func extends Element {
     public static Func currentFunc;
 
-    public final Set<ArgVar> args = new HashSet<>();
-    public final Set<StackVar> locals = new HashSet<>();
+    public final Set<LocalVar> vars = new HashSet<>();
 
     public Func(String name) {
         super(name);
@@ -37,8 +36,7 @@ public class Func extends Element {
     public void exit() {
         // delete local vars
         // since undefine removes element from set, iterate over COPY of set to avoid exception
-        new HashSet<>(args).forEach(ArgVar::undefine);
-        new HashSet<>(locals).forEach(StackVar::undefine);
+        new HashSet<>(vars).forEach(LocalVar::undefine);
 
         currentFunc = null;
 
@@ -56,29 +54,17 @@ public class Func extends Element {
     }
 
     /**
-     * current func arg variable offset (ebp+this)
-     */
-    public int argPos() {
-        return (1 + args.size()) * 4;
-    }
-
-    /**
-     * current local variable offset (ebp-this)
-     */
-    public int localPos() {
-        return locals.stream()
-                .mapToInt(v -> v.type.size)
-                .sum();
-    }
-
-    /**
      * call this function with args
      * todo function signatures and stuff
      */
     public void call(String... args) {
+        // push args (right to left)
         for (var i = args.length - 1; i >= 0; i--)
             Asm.write(String.format("push %s ; arg %s", args[i], i + 1));
+
         Asm.write("call " + getAsm());
+
+        // clean stack
         if (args.length > 0) Asm.write("add esp, " + args.length * 4);
     }
 }

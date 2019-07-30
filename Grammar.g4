@@ -18,10 +18,12 @@ funcCallArgs: (expr (',' expr)*)?;
 varDeclare: varType=IDENT name=IDENT ';';
 varAssign: name=IDENT '=' val=expr ';';
 
-asm: 'asm' '(' code=STR_LITERAL ')' ';';
+asm: 'asm' code=ASM_BLOCK ';';
+ASM_BLOCK: '"' .+? '"';
 
 block: '{' statement* '}';
-expr: INT_LITERAL
+expr: IDENT
+    | INT_LITERAL
     | STR_LITERAL
     ;
 

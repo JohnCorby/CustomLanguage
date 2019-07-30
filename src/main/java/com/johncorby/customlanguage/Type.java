@@ -14,4 +14,17 @@ public enum Type {
     public static Type get(String name) {
         return valueOf(name.toUpperCase());
     }
+
+    public String sizeOperand() {
+        switch (size) {
+            case 1:
+                return "byte";
+            case 2:
+                return "word";
+            case 4:
+                return "dword";
+            default:
+                throw new CompileError(String.format("unknown size operand %s for type %s", size, this));
+        }
+    }
 }

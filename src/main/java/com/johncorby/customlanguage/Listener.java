@@ -5,6 +5,9 @@ import com.johncorby.customlanguage.antlr.GrammarParser;
 import com.johncorby.customlanguage.element.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 public class Listener extends GrammarBaseListener {
     @Override
     public void enterFuncDeclare(GrammarParser.FuncDeclareContext ctx) {
@@ -42,7 +45,7 @@ public class Listener extends GrammarBaseListener {
     public void enterVarDeclare(GrammarParser.VarDeclareContext ctx) {
         // local var
         if (Func.currentFunc != null)
-            new StackVar(
+            new FrameVar(
                     Func.currentFunc,
                     Type.get(ctx.varType.getText()),
                     ctx.name.getText()
@@ -51,7 +54,7 @@ public class Listener extends GrammarBaseListener {
 
     @Override
     public void enterVarAssign(GrammarParser.VarAssignContext ctx) {
-        Element.get(Var.class, ctx.name.getText())
+        Var.get(ctx.name.getText())
                 .assign(ctx.val.getText());
     }
 
@@ -59,6 +62,18 @@ public class Listener extends GrammarBaseListener {
     public void enterAsm(GrammarParser.AsmContext ctx) {
         var code = ctx.code.getText();
         code = code.substring(1, code.length() - 1);
+
+        // replace format .name with local var equivalent
+        // so you can use local vars with asm blocks
+        var matches = Pattern.compile("\\.(\\w+)")
+                .matcher(code)
+                .results()
+                .map(m -> m.group(1))
+                .collect(Collectors.toSet());
+        for (var match : matches)
+            code = code.replace('.' + match,
+                    Element.get(LocalVar.class, match).getAsm());
+
         Asm.write(
                 "; begin asm",
                 code,

@@ -2,29 +2,21 @@ package com.johncorby.customlanguage.element;
 
 import com.johncorby.customlanguage.Type;
 
+import java.util.stream.Collectors;
+
 /**
- * func parameter variable
+ * func argument/parameter
  */
-public class ArgVar extends Var {
-    public final Func container;
-    public final int pos;
-
-    public ArgVar(Func container, Type type, String name) {
-        super(type, name);
-        this.container = container;
-
-        container.args.add(this);
-        this.pos = container.argPos();
+public class ArgVar extends LocalVar {
+    public ArgVar(Func parent, Type type, String name) {
+        super(parent, type, name);
     }
 
     @Override
-    public void undefine() {
-        container.args.remove(this);
-        super.undefine();
-    }
-
-    @Override
-    public String getAsm() {
-        return String.format("%s [ebp+%s]", type, pos);
+    public int initPos() {
+        var args = parent.vars.stream()
+                .filter(v -> v instanceof ArgVar)
+                .collect(Collectors.toSet());
+        return (1 + args.size()) * 4;
     }
 }
