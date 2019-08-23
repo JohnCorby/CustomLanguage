@@ -4,7 +4,8 @@ asm "format db '%u', 0";
 
 dword main() {
     dword a;
-    a = 0;
+    a = 1 * 2 + 3 * 4;
+    /*
     asm "
         ; a = 1 * 2 + 3 * 4
         mov eax, 1 ; eax = 1
@@ -29,4 +30,5 @@ dword main() {
 
         mov eax, 0
     ";
+    */
 }

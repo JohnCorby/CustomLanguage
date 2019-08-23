@@ -2,10 +2,12 @@ package com.johncorby.customlanguage;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.function.Function;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * misc utils
@@ -80,5 +82,14 @@ public class Util {
                     mapper.apply(match)
             );
         return input;
+    }
+
+    /**
+     * filter class objects by subclass
+     */
+    public static <T, R extends T> Stream<R> filterClass(Collection<T> input, Class<R> clazz) {
+        return input.stream()
+                .filter(clazz::isInstance)
+                .map(t -> (R) t);
     }
 }
