@@ -10,7 +10,7 @@ main:
     %define .a [ebp-4] ; local var
     enter 0, 4
 
-    mov [ebp+.argc], 10
+    mov [.argc], 10
 
     push .msg
     push format

@@ -40,8 +40,7 @@ public class DefinedFunc extends Func {
         currentFunc = null;
 
         Asm.write(
-                "mov esp, ebp",
-                "pop ebp",
+                "leave",
                 "ret",
                 "; end func " + name
         );

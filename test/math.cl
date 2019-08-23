@@ -7,11 +7,19 @@ dword main() {
     a = 0;
     asm "
         ; a = 1 * 2 + 3 * 4
-        mov eax, 1
-        mov edx, 2
-        mul edx
+        mov eax, 1 ; eax = 1
+        mov ecx, 2 ; ecx = 2
+        imul eax, ecx ; eax *= ecx
+        ; ecx = 3
+        ; edx = 4
+        ; ecx *= edx
+        ; eax += ecx
+        ; a = eax
 
-        mov [.a]
+        a = 1+1+1+1
+        eax = 1
+        ecx = 1
+        eax += ecx
 
 
         push .a
