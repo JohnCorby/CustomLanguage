@@ -1,3 +1,6 @@
+1*2+3*4;
+
+/*
 dword printf();
 
 asm "format db '%u', 0";
@@ -32,3 +35,4 @@ dword main() {
     ";
     */
 }
+*/

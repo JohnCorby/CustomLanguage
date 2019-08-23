@@ -1,5 +1,7 @@
 package com.johncorby.customlanguage;
 
+import static com.johncorby.customlanguage.Util.format;
+
 /**
  * represents var types
  */
@@ -27,7 +29,7 @@ public enum Type {
             case 4:
                 return "dword";
             default:
-                throw new CompileError(String.format("unknown size operand %s for type %s", size, this));
+                throw new CompileError(format("unknown size operand %s for type %s", size, this));
         }
     }
 }

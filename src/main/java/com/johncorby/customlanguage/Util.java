@@ -13,30 +13,25 @@ import java.util.stream.Stream;
  * misc utils
  */
 public class Util {
-    /**
-     * convert any object to a string
-     */
     public static String toString(Object obj) {
         if (obj instanceof Object[])
             return Arrays.deepToString((Object[]) obj);
         return String.valueOf(obj);
     }
 
-    /**
-     * python-like print format
-     */
-    public static String format(Object... args) {
-        StringBuilder msg = new StringBuilder();
-        for (var arg : args)
-            msg.append(toString(arg)).append(' ');
-        return msg.toString();
+    public static String format(String format, Object... args) {
+        var fargs = Arrays.stream(args)
+                .map(Util::toString)
+                .toArray(String[]::new);
+        return String.format(format, fargs);
     }
 
-    /**
-     * python-like print
-     */
-    public static void print(Object... args) {
-        System.out.println(format(args));
+    public static void print(Object x) {
+        System.out.println(x);
+    }
+
+    public static void print(String format, Object... args) {
+        print(format(format, args));
     }
 
     /**

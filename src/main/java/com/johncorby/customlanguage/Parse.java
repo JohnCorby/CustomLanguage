@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.IOException;
 
+import static com.johncorby.customlanguage.Listener.LISTENER;
 import static com.johncorby.customlanguage.Main.IN_PATH;
 
 /**
@@ -16,15 +17,14 @@ import static com.johncorby.customlanguage.Main.IN_PATH;
 public class Parse {
     public static void go() {
         try {
-            var lexer = new GrammarLexer(CharStreams.fromFileName(IN_PATH));
-            var tokenStream = new CommonTokenStream(lexer);
-            var parser = new GrammarParser(tokenStream);
+            var chars = CharStreams.fromFileName(IN_PATH);
+            var lexer = new GrammarLexer(chars);
+            var tokens = new CommonTokenStream(lexer);
+            var parser = new GrammarParser(tokens);
 
-            var listener = new Listener();
             var tree = parser.program();
-            var walker = new ParseTreeWalker();
-
-            walker.walk(listener, tree);
+            var walker = ParseTreeWalker.DEFAULT;
+            walker.walk(LISTENER, tree);
         } catch (IOException e) {
             e.printStackTrace();
         }

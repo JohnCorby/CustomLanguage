@@ -4,6 +4,8 @@ import com.johncorby.customlanguage.Type;
 
 import java.util.Objects;
 
+import static com.johncorby.customlanguage.Util.format;
+
 /**
  * variable contained in a function
  */
@@ -32,7 +34,7 @@ public abstract class LocalVar extends Var {
 
     @Override
     public String getAsm() {
-        return String.format(
+        return format(
                 pos < 0 ? "%s [ebp-%s]" : "%s [ebp+%s]",
                 type.sizeOperand(),
                 Math.abs(pos)

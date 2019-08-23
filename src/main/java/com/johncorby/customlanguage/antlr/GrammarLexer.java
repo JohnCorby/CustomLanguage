@@ -1,4 +1,4 @@
-// Generated from /home/johncorby/Desktop/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
+// Generated from /home/johncorby/Desktop/code stuff/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
 
 import org.antlr.v4.runtime.*;

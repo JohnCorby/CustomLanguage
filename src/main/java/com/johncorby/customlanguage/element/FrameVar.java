@@ -3,6 +3,8 @@ package com.johncorby.customlanguage.element;
 import com.johncorby.customlanguage.Asm;
 import com.johncorby.customlanguage.Type;
 
+import static com.johncorby.customlanguage.Util.format;
+
 /**
  * local var stored in current func's stack frame
  */
@@ -12,7 +14,7 @@ public class FrameVar extends LocalVar {
 
         // allocate space on declare
         // instead of all at once during func prologue cuz that's harder lol
-        Asm.write(String.format("sub esp, %s ; declare var %s", type.size, name));
+        Asm.write(format("sub esp, %s ; declare var %s", type.size, name));
     }
 
     @Override

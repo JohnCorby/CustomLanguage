@@ -6,21 +6,12 @@ import com.johncorby.customlanguage.element.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import static com.johncorby.customlanguage.Util.filterClass;
-import static com.johncorby.customlanguage.Util.print;
 
 /**
  * handles entering/exiting of antlr rules
  */
 public class Listener extends GrammarBaseListener {
-//    @Override
-//    public void enterEveryRule(ParserRuleContext ctx) {
-//        print("entered", ctx.getClass().getSimpleName());
-//    }
-//
-//    @Override
-//    public void exitEveryRule(ParserRuleContext ctx) {
-//        print("exited", ctx.getClass().getSimpleName());
-//    }
+    public static final Listener LISTENER = new Listener();
 
     @Override
     public void enterExternFuncDeclare(GrammarParser.ExternFuncDeclareContext ctx) {
@@ -58,7 +49,7 @@ public class Listener extends GrammarBaseListener {
                 .toArray(String[]::new);
 
         Element.get(Func.class, ctx.name.getText())
-                .call(args);
+                .call(ctx.args.children);
     }
 
     @Override
@@ -75,7 +66,7 @@ public class Listener extends GrammarBaseListener {
     @Override
     public void enterVarAssign(GrammarParser.VarAssignContext ctx) {
         Var.get(ctx.name.getText())
-                .assign(ctx.val.getText());
+                .assign(ctx.val);
     }
 
     @Override
@@ -94,24 +85,5 @@ public class Listener extends GrammarBaseListener {
                 code,
                 "; end asm"
         );
-    }
-
-    @Override
-    public void enterExpr(GrammarParser.ExprContext ctx) {
-        print(ctx.getText());
-        print(ctx.children);
-
-//        if (ctx.literal != null) {
-//
-//        } else if (ctx.func != null) {
-//
-//        } else if (ctx.paren != null) {
-//
-//        } else if (ctx.op != null) {
-//            switch (ctx.op.getText()) {
-//
-//            }
-//        } else
-//            throw new CompileError("i have no idea what this expr is: " + ctx.getText());
     }
 }

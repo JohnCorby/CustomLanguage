@@ -1,5 +1,6 @@
-// Generated from /home/johncorby/Desktop/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
+// Generated from /home/johncorby/Desktop/code stuff/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -162,16 +163,98 @@ public interface GrammarListener extends ParseTreeListener {
     void exitAsm(GrammarParser.AsmContext ctx);
 
     /**
-     * Enter a parse tree produced by {@link GrammarParser#expr}.
+     * Enter a parse tree produced by the {@code funcExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
      *
      * @param ctx the parse tree
      */
-    void enterExpr(GrammarParser.ExprContext ctx);
+    void enterFuncExpr(GrammarParser.FuncExprContext ctx);
 
     /**
-     * Exit a parse tree produced by {@link GrammarParser#expr}.
+     * Exit a parse tree produced by the {@code funcExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
      *
      * @param ctx the parse tree
      */
-    void exitExpr(GrammarParser.ExprContext ctx);
+    void exitFuncExpr(GrammarParser.FuncExprContext ctx);
+
+    /**
+     * Enter a parse tree produced by the {@code addSubExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterAddSubExpr(GrammarParser.AddSubExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by the {@code addSubExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitAddSubExpr(GrammarParser.AddSubExprContext ctx);
+
+    /**
+     * Enter a parse tree produced by the {@code mulDivExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterMulDivExpr(GrammarParser.MulDivExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by the {@code mulDivExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitMulDivExpr(GrammarParser.MulDivExprContext ctx);
+
+    /**
+     * Enter a parse tree produced by the {@code parenExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterParenExpr(GrammarParser.ParenExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by the {@code parenExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitParenExpr(GrammarParser.ParenExprContext ctx);
+
+    /**
+     * Enter a parse tree produced by the {@code numExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterNumExpr(GrammarParser.NumExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by the {@code numExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitNumExpr(GrammarParser.NumExprContext ctx);
+
+    /**
+     * Enter a parse tree produced by the {@code idExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterIdExpr(GrammarParser.IdExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by the {@code idExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitIdExpr(GrammarParser.IdExprContext ctx);
 }

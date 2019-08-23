@@ -24,11 +24,12 @@ varAssign: name=IDENT '=' val=expr ';';
 
 asm: 'asm' code=STR_LITERAL ';';
 
-expr: literal=INT_LITERAL
-    | func=funcCall
-    | '(' paren=expr ')'
-    | left=expr op=('*'|'/') right=expr
-    | left=expr op=('+'|'-') right=expr
+expr: '(' expr ')' #parenExpr
+    | left=expr op=('*'|'/') right=expr #mulDivExpr
+    | left=expr op=('+'|'-') right=expr #addSubExpr
+    | funcCall #funcExpr
+    | IDENT #idExpr
+    | INT_LITERAL #numExpr
     ;
 
 INT_LITERAL: '-'? DIGIT+;

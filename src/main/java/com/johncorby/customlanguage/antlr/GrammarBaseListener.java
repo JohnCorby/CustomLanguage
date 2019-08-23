@@ -1,4 +1,4 @@
-// Generated from /home/johncorby/Desktop/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
+// Generated from /home/johncorby/Desktop/code stuff/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -215,7 +215,7 @@ public class GrammarBaseListener implements GrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
-    public void enterExpr(GrammarParser.ExprContext ctx) {
+    public void enterFuncExpr(GrammarParser.FuncExprContext ctx) {
     }
 
     /**
@@ -224,7 +224,97 @@ public class GrammarBaseListener implements GrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
-    public void exitExpr(GrammarParser.ExprContext ctx) {
+    public void exitFuncExpr(GrammarParser.FuncExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterAddSubExpr(GrammarParser.AddSubExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitAddSubExpr(GrammarParser.AddSubExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterMulDivExpr(GrammarParser.MulDivExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitMulDivExpr(GrammarParser.MulDivExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterParenExpr(GrammarParser.ParenExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitParenExpr(GrammarParser.ParenExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterNumExpr(GrammarParser.NumExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitNumExpr(GrammarParser.NumExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterIdExpr(GrammarParser.IdExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitIdExpr(GrammarParser.IdExprContext ctx) {
     }
 
     /**
