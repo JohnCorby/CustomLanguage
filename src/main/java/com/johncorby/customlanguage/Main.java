@@ -2,8 +2,8 @@ package com.johncorby.customlanguage;
 
 /**
  * todo
+ * make everything an offset, using #define to alias var names to indexes
  * test suite for compiling (and possibly running) programs
- * make this whole thing more into a translator (aka store less info on things) to more easily blend with assembly
  */
 public class Main {
     public static String IN_PATH;

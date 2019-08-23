@@ -3,9 +3,6 @@ package com.johncorby.customlanguage;
 import com.johncorby.customlanguage.antlr.GrammarBaseListener;
 import com.johncorby.customlanguage.antlr.GrammarParser;
 import com.johncorby.customlanguage.element.*;
-import org.antlr.v4.runtime.tree.ParseTree;
-
-import static com.johncorby.customlanguage.Util.filterClass;
 
 /**
  * handles entering/exiting of antlr rules
@@ -42,12 +39,6 @@ public class Listener extends GrammarBaseListener {
 
     @Override
     public void enterFuncCall(GrammarParser.FuncCallContext ctx) {
-        String[] args;
-        if (ctx.args.children == null) args = new String[0];
-        else args = filterClass(ctx.args.children, GrammarParser.ExprContext.class)
-                .map(ParseTree::getText)
-                .toArray(String[]::new);
-
         Element.get(Func.class, ctx.name.getText())
                 .call(ctx.args.children);
     }
@@ -76,6 +67,7 @@ public class Listener extends GrammarBaseListener {
 
         // replace format .name with local var equivalent
         // so you can use local vars with asm blocks
+        // todo use #define here instead and offset etc etc
 
         code = Util.replaceMap(code, "\\.([a-zA-Z_][0-9a-zA-Z_]*)",
                 m -> Element.get(LocalVar.class, m.group(1)).getAsm());

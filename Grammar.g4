@@ -29,7 +29,7 @@ expr: '(' expr ')' #parenExpr
     | left=expr op=('+'|'-') right=expr #addSubExpr
     | funcCall #funcExpr
     | IDENT #idExpr
-    | INT_LITERAL #numExpr
+    | INT_LITERAL #intExpr
     ;
 
 INT_LITERAL: '-'? DIGIT+;

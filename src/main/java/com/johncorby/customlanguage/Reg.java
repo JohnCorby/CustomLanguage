@@ -56,19 +56,21 @@ public enum Reg {
         return reg;
     }
 
-    public static void store(String thing, Reg reg) {
+    public static void store(Reg reg, String thing) {
         Asm.write(format("mov %s, %s ; %s = %s", thing, reg, thing, reg));
         reg.setFree(true);
     }
 
-    public static void add(Reg reg1, Reg reg2) {
+    public static Reg add(Reg reg1, Reg reg2) {
         Asm.write(format("add %s, %s ; %s += %s", reg1, reg2, reg1, reg2));
         reg2.setFree(true);
+        return reg1;
     }
 
-    public static void mul(Reg reg1, Reg reg2) {
+    public static Reg mul(Reg reg1, Reg reg2) {
         Asm.write(format("imul %s, %s ; %s *= %s", reg1, reg2, reg1, reg2));
         reg2.setFree(true);
+        return reg1;
     }
 
     @Override

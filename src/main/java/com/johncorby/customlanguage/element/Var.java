@@ -1,11 +1,10 @@
 package com.johncorby.customlanguage.element;
 
-import com.johncorby.customlanguage.Asm;
+import com.johncorby.customlanguage.Reg;
 import com.johncorby.customlanguage.Type;
-import com.johncorby.customlanguage.antlr.GrammarParser;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import static com.johncorby.customlanguage.ExprVisitor.EXPR_VISITOR;
-import static com.johncorby.customlanguage.Util.format;
 
 /**
  * represents any variable
@@ -34,9 +33,8 @@ public abstract class Var extends Element {
     /**
      * assign this var a value
      */
-    public void assign(GrammarParser.ExprContext expr) {
-        // TODO more complex values, expr parsing, etc
-        // TODO variables
-        Asm.write(format("mov %s, %s ; assign var %s", getAsm(), EXPR_VISITOR.visit(expr), getAsm()));
+    public void assign(ParseTree expr) {
+        Reg.store(EXPR_VISITOR.visit(expr), getAsm());
+//        Asm.write(format("mov %s, %s ; assign var %s", getAsm(), EXPR_VISITOR.visit(expr), name));
     }
 }

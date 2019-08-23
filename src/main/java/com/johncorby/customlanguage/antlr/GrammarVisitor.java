@@ -1,6 +1,5 @@
 // Generated from /home/johncorby/Desktop/code stuff/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
-
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -8,7 +7,7 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * by {@link GrammarParser}.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
- *            operations with no return type.
+ * operations with no return type.
  */
 public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
     /**
@@ -109,6 +108,15 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
     T visitFuncExpr(GrammarParser.FuncExprContext ctx);
 
     /**
+     * Visit a parse tree produced by the {@code intExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    T visitIntExpr(GrammarParser.IntExprContext ctx);
+
+    /**
      * Visit a parse tree produced by the {@code addSubExpr}
      * labeled alternative in {@link GrammarParser#expr}.
      *
@@ -134,15 +142,6 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
      * @return the visitor result
      */
     T visitParenExpr(GrammarParser.ParenExprContext ctx);
-
-    /**
-     * Visit a parse tree produced by the {@code numExpr}
-     * labeled alternative in {@link GrammarParser#expr}.
-     *
-     * @param ctx the parse tree
-     * @return the visitor result
-     */
-    T visitNumExpr(GrammarParser.NumExprContext ctx);
 
     /**
      * Visit a parse tree produced by the {@code idExpr}

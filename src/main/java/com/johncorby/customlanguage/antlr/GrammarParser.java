@@ -560,6 +560,10 @@ public class GrammarParser extends Parser {
         return _localctx;
     }
 
+    public final ExprContext expr() throws RecognitionException {
+        return expr(0);
+    }
+
     private ExprContext expr(int _p) throws RecognitionException {
         ParserRuleContext _parentctx = _ctx;
         int _parentState = getState();
@@ -605,7 +609,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                     case 4: {
-                        _localctx = new NumExprContext(_localctx);
+                        _localctx = new IntExprContext(_localctx);
                         _ctx = _localctx;
                         _prevctx = _localctx;
                         setState(121);
@@ -685,24 +689,20 @@ public class GrammarParser extends Parser {
         return _localctx;
     }
 
+    public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
+        switch (ruleIndex) {
+            case 11:
+                return expr_sempred((ExprContext) _localctx, predIndex);
+        }
+        return true;
+    }
+
     private boolean expr_sempred(ExprContext _localctx, int predIndex) {
         switch (predIndex) {
             case 0:
                 return precpred(_ctx, 5);
             case 1:
                 return precpred(_ctx, 4);
-        }
-        return true;
-    }
-
-    public final ExprContext expr() throws RecognitionException {
-        return expr(0);
-    }
-
-    public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
-        switch (ruleIndex) {
-            case 11:
-                return expr_sempred((ExprContext) _localctx, predIndex);
         }
         return true;
     }
@@ -1195,6 +1195,32 @@ public class GrammarParser extends Parser {
         }
     }
 
+    public static class IntExprContext extends ExprContext {
+        public IntExprContext(ExprContext ctx) {
+            copyFrom(ctx);
+        }
+
+        public TerminalNode INT_LITERAL() {
+            return getToken(GrammarParser.INT_LITERAL, 0);
+        }
+
+        @Override
+        public void enterRule(ParseTreeListener listener) {
+            if (listener instanceof GrammarListener) ((GrammarListener) listener).enterIntExpr(this);
+        }
+
+        @Override
+        public void exitRule(ParseTreeListener listener) {
+            if (listener instanceof GrammarListener) ((GrammarListener) listener).exitIntExpr(this);
+        }
+
+        @Override
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+            if (visitor instanceof GrammarVisitor) return ((GrammarVisitor<? extends T>) visitor).visitIntExpr(this);
+            else return visitor.visitChildren(this);
+        }
+    }
+
     public static class AddSubExprContext extends ExprContext {
         public ExprContext left;
         public Token op;
@@ -1285,32 +1311,6 @@ public class GrammarParser extends Parser {
         @Override
         public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
             if (visitor instanceof GrammarVisitor) return ((GrammarVisitor<? extends T>) visitor).visitParenExpr(this);
-            else return visitor.visitChildren(this);
-        }
-    }
-
-    public static class NumExprContext extends ExprContext {
-        public NumExprContext(ExprContext ctx) {
-            copyFrom(ctx);
-        }
-
-        public TerminalNode INT_LITERAL() {
-            return getToken(GrammarParser.INT_LITERAL, 0);
-        }
-
-        @Override
-        public void enterRule(ParseTreeListener listener) {
-            if (listener instanceof GrammarListener) ((GrammarListener) listener).enterNumExpr(this);
-        }
-
-        @Override
-        public void exitRule(ParseTreeListener listener) {
-            if (listener instanceof GrammarListener) ((GrammarListener) listener).exitNumExpr(this);
-        }
-
-        @Override
-        public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-            if (visitor instanceof GrammarVisitor) return ((GrammarVisitor<? extends T>) visitor).visitNumExpr(this);
             else return visitor.visitChildren(this);
         }
     }

@@ -23,8 +23,7 @@ public class DefinedFunc extends Func {
                 "; begin func " + name,
                 "global " + name,
                 name + ":",
-                "push ebp",
-                "mov ebp, esp"
+                "enter 0, 0"
         );
     }
 

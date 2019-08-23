@@ -1,6 +1,5 @@
 // Generated from /home/johncorby/Desktop/code stuff/CustomLanguage/Grammar.g4 by ANTLR 4.7.2
 package com.johncorby.customlanguage.antlr;
-
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -179,6 +178,22 @@ public interface GrammarListener extends ParseTreeListener {
     void exitFuncExpr(GrammarParser.FuncExprContext ctx);
 
     /**
+     * Enter a parse tree produced by the {@code intExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterIntExpr(GrammarParser.IntExprContext ctx);
+
+    /**
+     * Exit a parse tree produced by the {@code intExpr}
+     * labeled alternative in {@link GrammarParser#expr}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitIntExpr(GrammarParser.IntExprContext ctx);
+
+    /**
      * Enter a parse tree produced by the {@code addSubExpr}
      * labeled alternative in {@link GrammarParser#expr}.
      *
@@ -225,22 +240,6 @@ public interface GrammarListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     void exitParenExpr(GrammarParser.ParenExprContext ctx);
-
-    /**
-     * Enter a parse tree produced by the {@code numExpr}
-     * labeled alternative in {@link GrammarParser#expr}.
-     *
-     * @param ctx the parse tree
-     */
-    void enterNumExpr(GrammarParser.NumExprContext ctx);
-
-    /**
-     * Exit a parse tree produced by the {@code numExpr}
-     * labeled alternative in {@link GrammarParser#expr}.
-     *
-     * @param ctx the parse tree
-     */
-    void exitNumExpr(GrammarParser.NumExprContext ctx);
 
     /**
      * Enter a parse tree produced by the {@code idExpr}

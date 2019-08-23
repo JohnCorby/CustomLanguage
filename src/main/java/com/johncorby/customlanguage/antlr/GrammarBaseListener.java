@@ -233,6 +233,24 @@ public class GrammarBaseListener implements GrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
+    public void enterIntExpr(GrammarParser.IntExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitIntExpr(GrammarParser.IntExprContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
     public void enterAddSubExpr(GrammarParser.AddSubExprContext ctx) {
     }
 
@@ -279,24 +297,6 @@ public class GrammarBaseListener implements GrammarListener {
      */
     @Override
     public void exitParenExpr(GrammarParser.ParenExprContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void enterNumExpr(GrammarParser.NumExprContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void exitNumExpr(GrammarParser.NumExprContext ctx) {
     }
 
     /**
