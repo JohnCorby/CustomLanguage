@@ -2,9 +2,6 @@ package com.johncorby.customlanguage.element;
 
 import com.johncorby.customlanguage.Asm;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import static com.johncorby.customlanguage.Util.format;
 
 /**
@@ -12,8 +9,6 @@ import static com.johncorby.customlanguage.Util.format;
  */
 public class DefinedFunc extends Func {
     public static DefinedFunc currentFunc;
-
-    public final Set<LocalVar> vars = new HashSet<>();
 
     public DefinedFunc(String name) {
         super(name);
@@ -34,8 +29,7 @@ public class DefinedFunc extends Func {
      */
     public void exit() {
         // delete local vars
-        // since undefine removes element from set, iterate over COPY of set to avoid exception
-        new HashSet<>(vars).forEach(LocalVar::undefine);
+        get(LocalVar.class).forEach(Element::undefine);
 
         currentFunc = null;
 

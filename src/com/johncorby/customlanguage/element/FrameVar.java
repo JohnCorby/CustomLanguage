@@ -18,9 +18,8 @@ public class FrameVar extends LocalVar {
     }
 
     @Override
-    public int initPos() {
-        return -parent.vars.stream()
-                .filter(v -> v instanceof FrameVar)
+    public int initOfs() {
+        return -get(FrameVar.class).stream()
                 .mapToInt(v -> v.type.size)
                 .sum();
     }

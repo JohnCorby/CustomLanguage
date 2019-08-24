@@ -9,17 +9,17 @@ import static com.johncorby.customlanguage.Util.format;
 
 /**
  * represents any variable
- *
+ * <p>
  * todo make offsets and stuff loli
  */
 public abstract class Var extends Element {
     public final Type type;
-    public final int pos;
+    public final int ofs;
 
     public Var(Type type, String name) {
         super(name);
         this.type = type;
-        pos = initPos();
+        ofs = initOfs();
     }
 
     /**
@@ -35,24 +35,24 @@ public abstract class Var extends Element {
         return get(GlobalVar.class, name);
     }
 
+    @Override
+    public String getAsm() {
+        return format(
+                "%s [%s%s%s]",
+                type.sizeOperand(),
+                getOfsBase(),
+                ofs > 0 ? "+" : "-",
+                Math.abs(ofs)
+        );
+    }
+
     public abstract void init(ParseTree expr);
 
     public void assign(ParseTree expr) {
         Reg.store(EXPR_VISITOR.visit(expr), getAsm());
     }
 
-    public abstract String getOffset();
+    public abstract String getOfsBase();
 
-    public abstract int initPos();
-
-    @Override
-    public String getAsm() {
-        return format(
-                "%s [%s%s%s]",
-                type.sizeOperand(),
-                getOffset(),
-                pos > 0 ? '+' : '-',
-                Math.abs(pos)
-        );
-    }
+    public abstract int initOfs();
 }

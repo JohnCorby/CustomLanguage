@@ -30,4 +30,16 @@ public class GlobalVar extends Var {
     public void init(ParseTree expr) {
         // todo implement
     }
+
+    @Override
+    public String getOfsBase() {
+        return "globals";
+    }
+
+    @Override
+    public int initOfs() {
+        return get(GlobalVar.class).stream()
+                .mapToInt(v -> v.type.size)
+                .sum();
+    }
 }

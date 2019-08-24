@@ -6,8 +6,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.johncorby.customlanguage.Util.cassert;
+import static com.johncorby.customlanguage.Util.filterClass;
 
 /**
  * storage of programming elements
@@ -29,14 +31,20 @@ public abstract class Element {
     }
 
     /**
-     * get element by type (and subtypes) and name
+     * get element by type/subtype
+     */
+    public static <E extends Element> Set<E> get(Class<E> type) {
+        return filterClass(elements, type)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * get element by type/subtype and name
      */
     public static <E extends Element> E get(Class<E> type, String name) {
-        for (var e : elements) {
-            if (type.isInstance(e) &&
-                    Objects.equals(e.name, name))
-                return (E) e;
-        }
+        for (var e : get(type))
+            if (Objects.equals(e.name, name))
+                return e;
         return null;
     }
 
