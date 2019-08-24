@@ -19,13 +19,13 @@ block: '{' statement* '}';
 funcCall: name=IDENT '(' args=funcCallArgs ')';
 funcCallArgs: (expr (',' expr)*)?;
 
-varDeclare: varType=IDENT name=IDENT ';';
+varDeclare: varType=IDENT name=IDENT '=' val=expr ';';
 varAssign: name=IDENT '=' val=expr ';';
 
 asm: 'asm' code=STR_LITERAL ';';
 
 expr: '(' expr ')' #parenExpr
-    | left=expr op=('*'|'/') right=expr #mulDivExpr
+    | left=expr op=('*'|'/'|'%') right=expr #mulDivExpr
     | left=expr op=('+'|'-') right=expr #addSubExpr
     | funcCall #funcExpr
     | IDENT #idExpr
@@ -33,6 +33,8 @@ expr: '(' expr ')' #parenExpr
     ;
 
 INT_LITERAL: '-'? DIGIT+;
+FLOAT_LITERAL: '-'? (DIGIT+ | '.' DIGIT+ | DIGIT+ '.' DIGIT+);
+CHAR_LITERAL: '\'' . '\'';
 STR_LITERAL: '"' .*? '"';
 
 IDENT: (LETTER | '_') (DIGIT | LETTER | '_')*;

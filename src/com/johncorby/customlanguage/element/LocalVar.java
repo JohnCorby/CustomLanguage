@@ -1,6 +1,7 @@
 package com.johncorby.customlanguage.element;
 
 import com.johncorby.customlanguage.Type;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.Objects;
 
@@ -13,9 +14,9 @@ public abstract class LocalVar extends Var {
     public final DefinedFunc parent;
     public final int pos;
 
-    public LocalVar(DefinedFunc parent, Type type, String name) {
+    public LocalVar(Type type, String name) {
         super(type, name);
-        this.parent = parent;
+        this.parent = DefinedFunc.currentFunc;
 
         parent.vars.add(this);
         this.pos = initPos();
@@ -39,6 +40,12 @@ public abstract class LocalVar extends Var {
                 type.sizeOperand(),
                 Math.abs(pos)
         );
+    }
+
+    @Override
+    public void init(ParseTree expr) {
+        if (expr == null) return;
+        assign(expr);
     }
 
     /**

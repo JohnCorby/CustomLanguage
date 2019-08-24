@@ -5,6 +5,8 @@ import com.johncorby.customlanguage.Asm;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.johncorby.customlanguage.Util.format;
+
 /**
  * a function that you define yourself
  */
@@ -20,10 +22,9 @@ public class DefinedFunc extends Func {
         currentFunc = this;
 
         Asm.write(
-                "; begin func " + name,
                 "global " + name,
                 name + ":",
-                "enter 0, 0"
+                format("enter 0, 0")
         );
     }
 
@@ -40,8 +41,7 @@ public class DefinedFunc extends Func {
 
         Asm.write(
                 "leave",
-                "ret",
-                "; end func " + name
+                "ret"
         );
     }
 }

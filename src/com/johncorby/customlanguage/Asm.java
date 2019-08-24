@@ -39,6 +39,7 @@ public class Asm {
         try {
             stream.close();
 
+            // todo include as resource
             do_cmd("./make.sh", OUT_PATH);
         } catch (IOException e) {
             e.printStackTrace();

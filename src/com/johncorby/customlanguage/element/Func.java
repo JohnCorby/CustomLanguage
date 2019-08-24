@@ -38,7 +38,7 @@ public abstract class Func extends Element {
 
         // push args (right to left)
         for (var i = args.length - 1; i >= 0; i--)
-            Asm.write(format("push %s ; arg %s", args[i], i + 1));
+            Asm.write(format("push %s", args[i]));
 
         Asm.write("call " + getAsm());
 

@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
  * func argument/parameter
  */
 public class ArgVar extends LocalVar {
-    public ArgVar(DefinedFunc parent, Type type, String name) {
-        super(parent, type, name);
+    public ArgVar(Type type, String name) {
+        super(type, name);
     }
 
     @Override

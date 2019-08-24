@@ -8,6 +8,8 @@ import static com.johncorby.customlanguage.ExprVisitor.EXPR_VISITOR;
 
 /**
  * represents any variable
+ *
+ * todo make offsets and stuff loli
  */
 public abstract class Var extends Element {
     public final Type type;
@@ -29,6 +31,11 @@ public abstract class Var extends Element {
         // then, try getting global var
         return get(GlobalVar.class, name);
     }
+
+    /**
+     * assign, but when declared
+     */
+    public abstract void init(ParseTree expr);
 
     /**
      * assign this var a value
