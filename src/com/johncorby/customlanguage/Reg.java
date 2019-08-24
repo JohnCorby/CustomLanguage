@@ -31,10 +31,6 @@ public enum Reg {
         this.preserved = preserved;
     }
 
-    public static Reg get(String name) {
-        return valueOf(name.toUpperCase());
-    }
-
     public static Reg getFree() {
         for (var reg : Reg.values())
             if (reg.free) return reg;

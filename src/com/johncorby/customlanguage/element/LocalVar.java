@@ -14,6 +14,13 @@ public abstract class LocalVar extends Var {
     }
 
     @Override
+    public void undefine() {
+        super.undefine();
+        var global = get(GlobalVar.class, name);
+        if (global != null)
+    }
+
+    @Override
     public void init(ParseTree expr) {
         if (expr == null) return;
         assign(expr);

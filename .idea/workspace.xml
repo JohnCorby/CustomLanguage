@@ -6,41 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3f31f1b-f74b-41b9-8318-5dac6a2199d1" name="Default Changelist" comment="this didnt get included in last commit for some reason">
+    <list default="true" id="e3f31f1b-f74b-41b9-8318-5dac6a2199d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Grammar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/Grammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/Grammar.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/antlr/GrammarVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/Grammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/Grammar.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarBaseListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarBaseVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarBaseVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarLexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$AddSubExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$AddSubExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$AsmContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$AsmContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$BlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$BlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ExternFuncDeclareContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ExternFuncDeclareContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncArgContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncArgContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncCallArgsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncCallArgsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncCallContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncCallContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncDeclareContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncDeclareContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$FuncExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$IdExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$IdExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$IntExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$IntExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$MulDivExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$MulDivExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ParenExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ParenExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ProgramContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$ProgramContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$StatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$StatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$VarAssignContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$VarAssignContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$VarDeclareContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser$VarDeclareContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/johncorby/customlanguage/antlr/GrammarParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/math.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/math.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/math.cl" beforeDir="false" afterPath="$PROJECT_DIR$/test/math.cl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/Reg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/Reg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/GlobalVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/GlobalVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/LocalVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/LocalVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/Var.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ANTLRv4" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test/math.cl" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -201,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566674013851</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="tested last commit whoopsies">
+      <created>1566674370709</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1566674370709</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -231,7 +210,8 @@
     <MESSAGE value="tidying up and stopping before dinner" />
     <MESSAGE value="all vars use offsets" />
     <MESSAGE value="this didnt get included in last commit for some reason" />
-    <option name="LAST_COMMIT_MESSAGE" value="this didnt get included in last commit for some reason" />
+    <MESSAGE value="tested last commit whoopsies" />
+    <option name="LAST_COMMIT_MESSAGE" value="tested last commit whoopsies" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

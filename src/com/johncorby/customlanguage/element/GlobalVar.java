@@ -1,6 +1,5 @@
 package com.johncorby.customlanguage.element;
 
-import com.johncorby.customlanguage.Asm;
 import com.johncorby.customlanguage.Type;
 import org.antlr.v4.runtime.tree.ParseTree;
 
@@ -13,12 +12,7 @@ public class GlobalVar extends Var {
 
     public GlobalVar(Type type, String name) {
         super(type, name);
-        // write header containing address to offset from with global vars (in same way that ebp is offset from with locals)
         // todo actually store globals all in one place and write them later (in same way that you do for pushing preserved regs to func?)
-        if (!headerWritten) {
-            Asm.write("globals:");
-            headerWritten = true;
-        }
     }
 
     @Override

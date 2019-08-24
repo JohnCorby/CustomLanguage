@@ -1,5 +1,6 @@
 package com.johncorby.customlanguage.element;
 
+import com.johncorby.customlanguage.Asm;
 import com.johncorby.customlanguage.Reg;
 import com.johncorby.customlanguage.Type;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -20,11 +21,13 @@ public abstract class Var extends Element {
         super(name);
         this.type = type;
         ofs = initOfs();
+        alias();
     }
 
     /**
      * get variable by name
      * allows overloading global var with local var
+     * todo multiple scope levels for local vars for if statements and stuff
      */
     public static Var get(String name) {
         // first, try getting local var
@@ -36,14 +39,22 @@ public abstract class Var extends Element {
     }
 
     @Override
+    public void undefine() {
+        unalias();
+        super.undefine();
+    }
+
+    @Override
     public String getAsm() {
-        return format(
-                "%s [%s%s%s]",
-                type.sizeOperand(),
-                getOfsBase(),
-                ofs > 0 ? "+" : "-",
-                Math.abs(ofs)
-        );
+        return name;
+    }
+
+    public void alias() {
+        Asm.write(format("%define %s %s+%s", name, getOfsBase(), ofs));
+    }
+
+    public void unalias() {
+        Asm.write("%undef " + name);
     }
 
     public abstract void init(ParseTree expr);
