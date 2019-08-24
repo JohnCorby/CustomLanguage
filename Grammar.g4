@@ -19,7 +19,7 @@ block: '{' statement* '}';
 funcCall: name=IDENT '(' args=funcCallArgs ')';
 funcCallArgs: (expr (',' expr)*)?;
 
-varDeclare: varType=IDENT name=IDENT '=' val=expr ';';
+varDeclare: varType=IDENT name=IDENT ('=' val=expr)? ';';
 varAssign: name=IDENT '=' val=expr ';';
 
 asm: 'asm' code=STR_LITERAL ';';
