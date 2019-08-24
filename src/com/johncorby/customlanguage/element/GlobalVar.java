@@ -15,7 +15,10 @@ public class GlobalVar extends Var {
         super(type, name);
         // write header containing address to offset from with global vars (in same way that ebp is offset from with locals)
         // todo actually store globals all in one place and write them later (in same way that you do for pushing preserved regs to func?)
-        if (!headerWritten) Asm.write("globals:");
+        if (!headerWritten) {
+            Asm.write("globals:");
+            headerWritten = true;
+        }
     }
 
     @Override
