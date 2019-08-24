@@ -10,6 +10,9 @@ import static com.johncorby.customlanguage.Util.format;
  * uses c calling conventions
  * scratch: eax, ecx, edx
  * preserved: ebx, esi, edi, ebp, esp
+ *
+ * todo use preserved and push and stuff
+ * todo sub and div and other stuff eventually
  */
 public enum Reg {
     EAX(false),

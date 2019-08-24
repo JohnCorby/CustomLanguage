@@ -4,7 +4,7 @@ asm "format db '%u', 0";
 
 dword main() {
     dword a;
-    a = 0;
+    a = 1*1+1*1+(1*1+(1*1+1)*1)+1*1+1;
     asm "
         push .a
         push format

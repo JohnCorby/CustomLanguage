@@ -14,6 +14,7 @@ public class FrameVar extends LocalVar {
 
         // allocate space on declare
         // instead of all at once during func prologue cuz that's harder lol
+        // todo do it all at once during func prologue its not that hard
         Asm.write(format("sub esp, %s ; declare var %s", type.size, name));
     }
 

@@ -9,7 +9,31 @@ global main
 main:
 enter 0, 0
 sub esp, 4 ; declare var a
-mov eax, 0 ; eax = 0
+mov eax, 1 ; eax = 1
+mov edx, 1 ; edx = 1
+imul eax, edx ; eax *= edx
+mov edx, 1 ; edx = 1
+mov ecx, 1 ; ecx = 1
+imul edx, ecx ; edx *= ecx
+add eax, edx ; eax += edx
+mov edx, 1 ; edx = 1
+mov ecx, 1 ; ecx = 1
+imul edx, ecx ; edx *= ecx
+mov ecx, 1 ; ecx = 1
+mov ebx, 1 ; ebx = 1
+imul ecx, ebx ; ecx *= ebx
+mov ebx, 1 ; ebx = 1
+add ecx, ebx ; ecx += ebx
+mov ebx, 1 ; ebx = 1
+imul ecx, ebx ; ecx *= ebx
+add edx, ecx ; edx += ecx
+add eax, edx ; eax += edx
+mov edx, 1 ; edx = 1
+mov ecx, 1 ; ecx = 1
+imul edx, ecx ; edx *= ecx
+add eax, edx ; eax += edx
+mov edx, 1 ; edx = 1
+add eax, edx ; eax += edx
 mov dword [ebp-4], eax ; dword [ebp-4] = eax
 ; begin asm
 
