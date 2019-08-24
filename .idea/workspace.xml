@@ -8,7 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e3f31f1b-f74b-41b9-8318-5dac6a2199d1" name="Default Changelist" comment="tidying up and stopping before dinner`">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/GlobalVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/GlobalVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/LocalVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/LocalVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/johncorby/customlanguage/element/Var.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +29,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">

@@ -5,6 +5,7 @@ import com.johncorby.customlanguage.Type;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import static com.johncorby.customlanguage.ExprVisitor.EXPR_VISITOR;
+import static com.johncorby.customlanguage.Util.format;
 
 /**
  * represents any variable
@@ -13,10 +14,12 @@ import static com.johncorby.customlanguage.ExprVisitor.EXPR_VISITOR;
  */
 public abstract class Var extends Element {
     public final Type type;
+    public final int pos;
 
     public Var(Type type, String name) {
         super(name);
         this.type = type;
+        pos = initPos();
     }
 
     /**
@@ -32,16 +35,24 @@ public abstract class Var extends Element {
         return get(GlobalVar.class, name);
     }
 
-    /**
-     * assign, but when declared
-     */
     public abstract void init(ParseTree expr);
 
-    /**
-     * assign this var a value
-     */
     public void assign(ParseTree expr) {
         Reg.store(EXPR_VISITOR.visit(expr), getAsm());
-//        Asm.write(format("mov %s, %s ; assign var %s", getAsm(), EXPR_VISITOR.visit(expr), name));
+    }
+
+    public abstract String getOffset();
+
+    public abstract int initPos();
+
+    @Override
+    public String getAsm() {
+        return format(
+                "%s [%s%s%s]",
+                type.sizeOperand(),
+                getOffset(),
+                pos > 0 ? '+' : '-',
+                Math.abs(pos)
+        );
     }
 }
